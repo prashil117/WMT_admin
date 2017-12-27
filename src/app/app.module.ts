@@ -9,6 +9,9 @@ import { UserComponent } from './user/user.component';
 import { UserserviceService } from '../app/user/userservice.service';
 import { TravelerComponent } from './traveler/traveler.component';
 import { TravelerserviceService } from './traveler/travelerservice.service';
+import { HotelComponent } from './hotel/hotel.component';
+import { HotelDataService } from './hotel-data.service';
+
 
 
 @NgModule({
@@ -16,13 +19,14 @@ import { TravelerserviceService } from './traveler/travelerservice.service';
     AppComponent,
     NavbarComponent,
     UserComponent,
-    TravelerComponent
+    TravelerComponent,
+    HotelComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [UserserviceService,TravelerserviceService],
+  providers: [UserserviceService,TravelerserviceService,HotelDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
