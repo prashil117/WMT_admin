@@ -1,7 +1,7 @@
 export class Traveler
 {
-    public constructor(public traveler_id:string,public traveller_name:string,
-        public traveler_email:string,public traveler_address:string,public city:string)
+    public constructor(public traveller_id:string,public traveller_name:string,
+        public traveller_email:string,public traveller_address:string,public city:string)
     {
         
     }
