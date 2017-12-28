@@ -14,6 +14,14 @@ import { HotelComponent } from './hotel/hotel.component';
 import { HotelDataService } from './hotel-data.service';
 import { routingArray } from './app.router';
 import { LoginComponent } from './login/login.component';
+import { EdithotelComponent } from './edithotel/edithotel.component';
+import { AddhotelComponent } from './addhotel/addhotel.component';
+
+import { AdduserComponent } from './adduser/adduser.component';
+import { EdituserComponent } from './edituser/edituser.component';
+import { AddtavelerComponent } from './addtaveler/addtaveler.component';
+import { EdittavelerComponent } from './edittaveler/edittaveler.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +30,14 @@ import { LoginComponent } from './login/login.component';
     UserComponent,
     TravelerComponent,
     HotelComponent,
-    LoginComponent
+    LoginComponent,
+    EdithotelComponent,
+    AddhotelComponent,
+    AdduserComponent,
+    EdituserComponent,
+    AddtavelerComponent,
+    EdittavelerComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

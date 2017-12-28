@@ -14,7 +14,9 @@
                         <div class="col-md-12">
                             <div class="panel panel-primary">
                                 <div class="panel-body">
-                                    <h4 class="m-b-30 m-t-0"></h4>
+                                    <h4 class="m-b-30 m-t-0"><a routerLink="/adduser"><span class="ion-plus-circled"></span></a>
+                                        <input class="form-control" type=text name="search" placeholder="search">
+                                    </h4>
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <table id="datatable" class="table table-striped table-bordered">
@@ -53,7 +55,7 @@
 
                                                         <td>
                                                             <a (click)="deletuser(item)"><span class="ion ion-trash-b"> </span></a> |
-                                                            <a><span class=" ion ion-edit xm"> </span></a>
+                                                            <a routerLink="/edituser"><span class=" ion ion-edit xm"> </span></a>
 
                                                         </td>
                                                     </tr>
