@@ -18,6 +18,15 @@ export class TravelerComponent implements OnInit {
       }
     );
   }
+  onTravellerDelete(item)
+  {
+  
+    this.data1.deleteTraveller(item.traveller_id).subscribe(
+      (data:any)=>{
+        this.Traveler.splice(this.Traveler.indexOf(item,1));
+      }
+    );
+  }
  
 
 }

@@ -19,5 +19,13 @@ export class HotelComponent implements OnInit {
       }
     );
   }
+  onHotelDelete(item)
+  {
+    this._data.deleteHotel(item.hotel_id).subscribe(
+      (data:any)=>{
+        this.hotel.splice(this.hotel.indexOf(item,1));
+      }
+    );
+  }
 
 }

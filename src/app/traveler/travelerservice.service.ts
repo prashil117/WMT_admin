@@ -12,4 +12,7 @@ export class TravelerserviceService {
   {
     return this._http.get<Traveler>(this.url);
   }
+  deleteTraveller(id:number){
+    return this._http.delete(this.url+id,{headers:new HttpHeaders().set('Content-Type','application/json')});
+  }
 }
