@@ -11,6 +11,7 @@ export class TravelerserviceService {
   getAlltraveller()
   {
     return this._http.get<Traveler>(this.url);
+    //hkbdhkgbsrgbrgnrlrjl
   }
   deleteTraveller(id:number){
     return this._http.delete(this.url+id,{headers:new HttpHeaders().set('Content-Type','application/json')});
