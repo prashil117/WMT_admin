@@ -1,15 +1,17 @@
+<app-navbar></app-navbar>
 <div class="accountbg"></div>
 <div class="wrapper-page">
     <div class="panel panel-color panel-primary panel-pages">
         <div class="panel-body">
-            <h3 class="text-center m-t-0 m-b-15"> <a href="index.html" class="logo logo-admin"><span>Add</span>User</a></h3>
+            <a routerLink="/user">Back</a>
+            <h3 class="text-center m-t-0 m-b-15"> <label class="logo logo-admin"><span>Add</span>User</label></h3>
             <h4 class="text-muted text-center m-t-0"></h4>
-            <form class="form-horizontal m-t-20" action="index.html">
+            <form class="form-horizontal m-t-20">
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="email" required="" name="email_id" id="email_id" placeholder="email_id" [(ngModel)]="email_id"  ></div>
+                    <div class="col-xs-12"> <input class="form-control" type="email" required="" name="email_id" id="email_id" placeholder="email_id" [(ngModel)]="email_id"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="user name" [(ngModel)]="user_name" name="user_name" id="user_name" ></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="user name" [(ngModel)]="user_name" name="user_name" id="user_name"></div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12"> <input class="form-control" type="password" required="" placeholder="password" [(ngModel)]="password" name="password" id="password"></div>
@@ -27,13 +29,13 @@
                     <div class="col-xs-12"> <input class="form-control" style="height:30px" type="text" required="" placeholder="address" [(ngModel)]="address" name="address" id="address"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="radio" [(ngModel)]="gender" id="gender" name="male" value="male" > Male
+                    <div class="col-xs-12"> <input class="form-control" type="radio" [(ngModel)]="gender" id="gender" name="male" value="male"> Male
                         <input type="radio" name="female" [(ngModel)]="gender" id="gender" value="female"> Female
                     </div>
                 </div>
                 <div class="form-group text-center m-t-40">
                     <div (click)="onAdd()" class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Add</button></div>
-                    <a routerLink="/user">Back</a>
+
                 </div>
 
             </form>

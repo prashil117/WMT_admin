@@ -14,7 +14,7 @@
                         <div class="col-md-12">
                             <div class="panel panel-primary">
                                 <div class="panel-body">
-                                    <h4 class="m-b-30 m-t-0"><a routerLink="/addtraveler"><span class="ion-plus-circled"></span></a>
+                                    <h4 align="right" class="m-b-30 m-t-0"><button (click)="onNavigate()" style="border-radius:6px;" class=" form-group btn-danger btn-lg ion-plus-circled "> Add</button><br>
                                         <input class="form-control" type=text name="search" placeholder="search">
                                     </h4>
                                     <div class="row">
@@ -23,19 +23,15 @@
                                             <table id="datatable" class="table table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Traveler_Id</th>
-                                                        <th>T_Email</th>
-                                                        <th>T_Name</th>
-                                                        <th>T_Address</th>
+                                                        <th>Traveller Email</th>
+                                                        <th>Traveller Name</th>
+                                                        <th>Traveller Address</th>
                                                         <th>City</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr *ngFor="let item of Traveler">
-                                                        <td>
-                                                            {{item.traveller_id}}
-                                                        </td>
                                                         <td>
                                                             {{item.traveller_email}}
                                                         </td>

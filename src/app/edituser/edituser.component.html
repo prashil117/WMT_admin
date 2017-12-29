@@ -1,10 +1,12 @@
+<app-navbar></app-navbar>
 <div class="accountbg"></div>
 <div class="wrapper-page">
     <div class="panel panel-color panel-primary panel-pages">
         <div class="panel-body">
-            <h3 class="text-center m-t-0 m-b-15"> <a href="index.html" class="logo logo-admin"><span>Edit</span>User</a></h3>
+            <a routerLink="/user">Back</a>
+            <h3 class="text-center m-t-0 m-b-15"> <label class="logo logo-admin"><span>Edit</span>User</label></h3>
             <h4 class="text-muted text-center m-t-0"></h4>
-            <form class="form-horizontal m-t-20" action="index.html">
+            <form class="form-horizontal m-t-20">
                 <div class="form-group">
                     <div class="col-xs-12"> <input class="form-control" type="email" required="" placeholder="email_id "></div>
                 </div>
@@ -32,7 +34,7 @@
                 </div>
                 <div class="form-group text-center m-t-40">
                     <div class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Update</button></div>
-                    <a routerLink="/user">Back</a>
+
                 </div>
 
             </form>

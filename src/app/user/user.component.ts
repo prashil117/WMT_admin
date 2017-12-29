@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from './userservice.service';
 import { User } from "./userc";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +10,7 @@ import { User } from "./userc";
 })
 export class UserComponent implements OnInit {
   public users:User[]=[];
-  constructor(public data1:UserserviceService) { }
+  constructor(public data1:UserserviceService,public _router:Router) { }
 
   ngOnInit() {
     this.data1.getAllUsers().subscribe(
@@ -26,6 +27,10 @@ export class UserComponent implements OnInit {
         this.users.splice(this.users.indexOf(item),1);
       }
     );
+  }
+  onNavigate()
+  {
+    this._router.navigate(['/adduser']);
   }
 
 }
