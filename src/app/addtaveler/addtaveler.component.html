@@ -1,32 +1,39 @@
+<app-navbar></app-navbar>
 <div class="accountbg"></div>
 <div class="wrapper-page">
     <div class="panel panel-color panel-primary panel-pages">
         <div class="panel-body">
-            <h3 class="text-center m-t-0 m-b-15"> <a href="index.html" class="logo logo-admin"><span>Add</span>Traveler</a></h3>
+            <a routerLink="/traveler">Back</a>
+            <h3 class="text-center m-t-0 m-b-15"> <label class="logo logo-admin"><span>Add</span>Traveler</label></h3>
             <h4 class="text-muted text-center m-t-0"></h4>
-            <form class="form-horizontal m-t-20" action="index.html">
+            <form class="form-horizontal m-t-20">
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Traveler name"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" name="name" id="name" required="" [(ngModel)]="name" placeholder="Traveler name">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="travler Email"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" name="email_id" id="email_id" [(ngModel)]="email_id" placeholder="travler Email">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Password"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="password" required="" name="password" id="password" [(ngModel)]="password" placeholder="Password">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Address"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" name="address" id="address" [(ngModel)]="address" placeholder="Address">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="image"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" name="image" id="image" [(ngModel)]="image" placeholder="image">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="city"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" name="city" id="city" [(ngModel)]="city" placeholder="city">
+                    </div>
                 </div>
                 <div class="form-group text-center m-t-40">
-                    <div class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Add</button></div>
-                    <a routerLink="/traveler">back</a>
-
+                    <div (click)="onAdd()" class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light">Add</button>
+                    </div>
                 </div>
 
             </form>

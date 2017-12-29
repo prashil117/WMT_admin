@@ -1,6 +1,7 @@
 import { Traveler } from './travelerc';
 import { TravelerserviceService } from './travelerservice.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-traveler',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./traveler.component.css']
 })
 export class TravelerComponent implements OnInit {
-  constructor(public data1:TravelerserviceService) { }
+  constructor(public data1:TravelerserviceService,public _router:Router) { }
   public Traveler:Traveler[]=[];
   
   ngOnInit() {
@@ -23,10 +24,14 @@ export class TravelerComponent implements OnInit {
   
     this.data1.deleteTraveller(item.traveller_id).subscribe(
       (data:any)=>{
-        this.Traveler.splice(this.Traveler.indexOf(item,1));
+        this.Traveler.splice(this.Traveler.indexOf(item),1);
       }
     );
   }
- 
+  onNavigate()
+  {
+    this._router.navigate(['/addtraveler']);
+  }
+
 
 }
