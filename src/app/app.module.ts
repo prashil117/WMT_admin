@@ -2,6 +2,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule,HttpHeaders } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 
 
 import { AppComponent } from './app.component';
@@ -16,6 +18,9 @@ import { routingArray } from './app.router';
 import { LoginComponent } from './login/login.component';
 import { EdithotelComponent } from './edithotel/edithotel.component';
 import { AddhotelComponent } from './addhotel/addhotel.component';
+import {LoginDataService  } from './login-data.service';
+
+
 
 import { AdduserComponent } from './adduser/adduser.component';
 import { EdituserComponent } from './edituser/edituser.component';
@@ -26,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
+   
     NavbarComponent,
     UserComponent,
     TravelerComponent,
@@ -37,14 +43,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EdituserComponent,
     AddtavelerComponent,
     EdittavelerComponent,
+    LoginComponent,
     DashboardComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     routingArray
   ],
-  providers: [UserserviceService,TravelerserviceService,HotelDataService],
+  providers: [UserserviceService,TravelerserviceService,HotelDataService,LoginDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

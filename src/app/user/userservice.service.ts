@@ -15,4 +15,9 @@ export class UserserviceService {
   deleteUser(id:string){
     return this._http.delete(this.url+id,{headers:new HttpHeaders().set('Content-Type','application/json')});
   }
+  addUser(item){
+
+    let body=JSON.stringify(item);
+    return this._http.post(this.url,body,{headers: new HttpHeaders().set('Content-Type','application/json')});
+  }
 }
