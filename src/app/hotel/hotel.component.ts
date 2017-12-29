@@ -23,7 +23,7 @@ export class HotelComponent implements OnInit {
   {
     this._data.deleteHotel(item.hotel_id).subscribe(
       (data:any)=>{
-        this.hotel.splice(this.hotel.indexOf(item,1));
+        this.hotel.splice(this.hotel.indexOf(item),1);
       }
     );
   }

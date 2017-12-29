@@ -6,31 +6,28 @@
             <h4 class="text-muted text-center m-t-0"></h4>
             <form class="form-horizontal m-t-20" action="index.html">
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="hotel name "></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="hotel name " [(ngModel)]="hotel_name" name="hotel_name" id="hotel_name"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="hotel_address"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="hotel_address" [(ngModel)]="hotel_address" name="hotel_address" id="hotel_address"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="hotel_image"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="hotel_image" [(ngModel)]="hotel_img" name="hotel_img" id="hotel_img"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Feedback"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Feedback" [(ngModel)]="hotel_feedback" name="hotel_feedback" id="hotel_feedback"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Description"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="city" [(ngModel)]="hotel_city" name="hotel_city" id="hotel_city"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="city"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="rating" [(ngModel)]="hotel_rating" name="hotel_rating" id="hotel_rating"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="rating"></div>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Description"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Description" [(ngModel)]="hotel_description" name="hotel_description" id="hotel_description"></div>
                 </div>
                 <div class="form-group text-center m-t-40">
-                    <div class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Add</button></div>
+                    <div  (click)="onAdd()" class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Add</button></div>
                     <a routerLink="/hotels">Back</a>
                 </div>
 
