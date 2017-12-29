@@ -23,6 +23,7 @@
                                             <table id="datatable " class="table table-striped table-bordered ">
                                                 <thead>
                                                     <tr>
+                                                        <th></th>
                                                         <th>User Email</th>
                                                         <th>User Name</th>
                                                         <th>Address</th>
@@ -35,6 +36,9 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr *ngFor="let item of users ">
+                                                        <td>
+                                                                <input type="checkbox" name="usercheck">
+                                                        </td>
                                                         <td>
                                                             {{item.user_email_id}}
                                                         </td>

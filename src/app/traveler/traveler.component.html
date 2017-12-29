@@ -23,6 +23,7 @@
                                             <table id="datatable" class="table table-striped table-bordered">
                                                 <thead>
                                                     <tr>
+                                                        <th></th>
                                                         <th>Traveller Email</th>
                                                         <th>Traveller Name</th>
                                                         <th>Traveller Address</th>
@@ -32,6 +33,9 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr *ngFor="let item of Traveler">
+                                                            <td>
+                                                                    <input type="checkbox" name="travelercheck">
+                                                            </td>
                                                         <td>
                                                             {{item.traveller_email}}
                                                         </td>

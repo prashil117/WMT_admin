@@ -29,7 +29,7 @@
                     <div class="col-xs-12"> <input class="form-control" style="height:30px" type="text" required="" placeholder="address" [(ngModel)]="address" name="address" id="address"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="radio" [(ngModel)]="gender" id="gender" name="male" value="male"> Male
+                    <div class="col-xs-12"> <input type="radio" [(ngModel)]="gender" id="gender" name="male" value="male"> Male
                         <input type="radio" name="female" [(ngModel)]="gender" id="gender" value="female"> Female
                     </div>
                 </div>
@@ -37,7 +37,6 @@
                     <div (click)="onAdd()" class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Add</button></div>
 
                 </div>
-
             </form>
         </div>
     </div>
