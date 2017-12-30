@@ -39,7 +39,7 @@ export class HotelComponent implements OnInit {
   {
     if(this.txtsearch!='')
     {
-      this.hotel=this.hotel1.filter((x)=>x.hotel_name.indexOf(this.txtsearch)==-1);
+      this.hotel=this.hotel1.filter((x)=>x.hotel_name.indexOf(this.txtsearch)!==-1);
       
     }
     else
