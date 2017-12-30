@@ -11,29 +11,29 @@
                     <div class="col-xs-12"> <input class="form-control" type="email" required="" placeholder="email_id "></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="user name"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required name="name" [(ngModel)]="name"  placeholder="user name"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="password" required="" placeholder="password"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="password" required placeholder="password"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Birth date"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required [(ngModel)]="bod" name="bod" placeholder="Birth date"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="image"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required [(ngModel)]="img" name="img" placeholder="image"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Mobile_no"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required [(ngModel)]="mobile" name="mobile" placeholder="Mobile_no"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="address"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required [(ngModel)]=" address" name="address"placeholder="address"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input type="radio" name="gender" value="name"> male <input type="radio" name="gender" value="female"> female
+                    <div class="col-xs-12"> <input type="radio" [checked]="gender=='male'" [(ngModel)]="gender" name="gender" value="male"> male <input type="radio" name="gender" [(ngModel)]="gender" [checked]="gender=='female'" value="female"> female
                     </div>
                 </div>
                 <div class="form-group text-center m-t-40">
-                    <div class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Update</button></div>
+                    <div class="col-xs-12"> <button (click)="onUpdate()" class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Update</button></div>
 
                 </div>
 

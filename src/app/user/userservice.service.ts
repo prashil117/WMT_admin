@@ -13,7 +13,10 @@ export class UserserviceService {
   getAllUsers() {
     return this._http.get<User>(this.url);
   }
+  getUserById(id){
 
+    return this._http.get<User[]>(this.url+id);
+  }
   deleteUser(id: string) {
     return this._http.delete(this.url + id, { headers: new HttpHeaders().set(this.content, this.header) });
   }
@@ -21,6 +24,11 @@ export class UserserviceService {
 
     let body = JSON.stringify(item);
     return this._http.post(this.url, body, { headers: new HttpHeaders().set(this.content, this.header) });
+  }
+  editUser(id,item){
+    let body = JSON.stringify(item);
+    return this._http.put(this.url+id, body, { headers: new HttpHeaders().set(this.content, this.header) });
+ 
   }
 
 }

@@ -22,7 +22,7 @@ const routing:Routes = [
     {path:'edithotel',component:EdithotelComponent},
     {path:'addhotel',component:AddhotelComponent},
     {path:'adduser',component:AdduserComponent},
-    {path:'edituser',component:EdituserComponent},
+    {path:'edituser/:email_id',component:EdituserComponent},
     {path:'addtraveler',component:AddtavelerComponent},
     {path:'edittraveler',component:EdittavelerComponent},
     {path:'dashboard',component:DashboardComponent}

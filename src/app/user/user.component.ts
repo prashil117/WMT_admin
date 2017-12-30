@@ -25,7 +25,10 @@ export class UserComponent implements OnInit {
       }
     );
   }
-
+editUser(item){
+ 
+  this._router.navigate(['/edituser',item.user_email_id]);
+}
   deletuser(item)
   {
     this.data1.deleteUser(item.user_email_id).subscribe(
