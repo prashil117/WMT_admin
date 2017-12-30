@@ -10,12 +10,18 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   public users:User[]=[];
+  public users1:User[]=[];
+  public no:User[]=[];
+  public no1:User[]=[];
+  txtsearch:string="";
   constructor(public data1:UserserviceService,public _router:Router) { }
 
   ngOnInit() {
     this.data1.getAllUsers().subscribe(
       (data:any)=>{
         this.users=data;
+        this.users1=data;
+      
       }
     );
   }
@@ -32,5 +38,19 @@ export class UserComponent implements OnInit {
   {
     this._router.navigate(['/adduser']);
   }
+  onSearch()
+  {
+    if(this.txtsearch!='')
+    {
+      this.users=this.users1.filter((x)=>x.user_name.indexOf(this.txtsearch)!==-1);
+      
+    }
+    else
+    {
+      this.users=this.users1;
+      
+    }
+  }
+ 
 
 }

@@ -11,11 +11,14 @@ import { Router } from '@angular/router';
 export class TravelerComponent implements OnInit {
   constructor(public data1:TravelerserviceService,public _router:Router) { }
   public Traveler:Traveler[]=[];
+  public Traveler1:Traveler[]=[];
+  txtsearch:string="";
   
   ngOnInit() {
     this.data1.getAlltraveller().subscribe(
       (data:any)=>{
         this.Traveler=data;
+        this.Traveler1=data;
       }
     );
   }
@@ -32,6 +35,18 @@ export class TravelerComponent implements OnInit {
   {
     this._router.navigate(['/addtraveler']);
   }
-
+  onSearch()
+  {
+    if(this.txtsearch!='')
+    {
+      this.Traveler=this.Traveler1.filter((x)=>x.traveller_name.indexOf(this.txtsearch)!==-1);
+      
+    }
+    else
+    {
+      this.Traveler=this.Traveler1;
+      
+    }
+  }
 
 }

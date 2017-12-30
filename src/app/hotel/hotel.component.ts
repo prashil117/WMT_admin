@@ -11,13 +11,15 @@ import { Router } from '@angular/router';
 })
 export class HotelComponent implements OnInit {
   public hotel:Hotels[]=[];
-
+  public hotel1:Hotels[]=[];
+  txtsearch:string="";
   constructor(public _data:HotelDataService,public _router:Router) { }
 
   ngOnInit() {
     this._data.getAllHotels().subscribe(
       (data:any)=>{
         this.hotel=data;
+        this.hotel1=data;
       }
     );
   }
@@ -33,6 +35,17 @@ export class HotelComponent implements OnInit {
   {
     this._router.navigate(['/addhotel']);
   }
-
-
+  onSearch()
+  {
+    if(this.txtsearch!='')
+    {
+      this.hotel=this.hotel1.filter((x)=>x.hotel_name.indexOf(this.txtsearch)==-1);
+      
+    }
+    else
+    {
+      this.hotel=this.hotel1;
+      
+    }
+  }
 }
