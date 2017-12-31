@@ -12,6 +12,10 @@ export class HotelDataService {
   getAllHotels(){
     return this._http.get<Hotels>(this.url);
   }
+  getHotelById(id){
+    
+        return this._http.get<Hotels[]>(this.url+id);
+      }
   addHotel(hotel:Hotels){
     let body=JSON.stringify(hotel);
     return this._http.post(this.url,body,{headers:new HttpHeaders().set(this.content,this.header)});
@@ -19,8 +23,11 @@ export class HotelDataService {
   deleteHotel(id:string){
     return this._http.delete(this.url+id,{headers:new HttpHeaders().set(this.content,this.header)});
   }
-  updateHotel(hotel:Hotels){
-    let body=JSON.stringify(hotel);
-    return this._http.put(this.url+hotel.hotel_img,body,{headers:new HttpHeaders().set('Content-Type','application/json')});
+  
+
+  editHotel(id,item){
+    let body = JSON.stringify(item);
+    return this._http.put(this.url+id, body, { headers: new HttpHeaders().set(this.content, this.header) });
+ 
   }
 }
