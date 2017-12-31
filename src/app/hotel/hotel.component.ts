@@ -23,6 +23,12 @@ export class HotelComponent implements OnInit {
       }
     );
   }
+
+  editHotel(item){
+    
+     this._router.navigate(['/edithotel',item.hotel_id]);
+   }
+
   onHotelDelete(item)
   {
     this._data.deleteHotel(item.hotel_id).subscribe(

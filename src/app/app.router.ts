@@ -19,7 +19,7 @@ const routing:Routes = [
     {path: 'traveler',component: TravelerComponent},
     {path: 'hotels',component: HotelComponent},
     {path:'login',component:LoginComponent},
-    {path:'edithotel',component:EdithotelComponent},
+    {path:'edithotel/:id',component:EdithotelComponent},
     {path:'addhotel',component:AddhotelComponent},
     {path:'adduser',component:AdduserComponent},
     {path:'edituser/:email_id',component:EdituserComponent},
