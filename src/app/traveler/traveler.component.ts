@@ -31,6 +31,10 @@ export class TravelerComponent implements OnInit {
       }
     );
   }
+  editTraveler(item){
+ 
+    this._router.navigate(['/edittraveler',item.traveller_email]);
+  }
   onNavigate()
   {
     this._router.navigate(['/addtraveler']);

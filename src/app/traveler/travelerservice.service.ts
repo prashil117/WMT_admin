@@ -15,6 +15,10 @@ export class TravelerserviceService {
     return this._http.get<Traveler>(this.url);
     //hkbdhkgbsrgbrgnrlrjl
   }
+  getTravelerById(id){
+
+    return this._http.get<Traveler[]>(this.url+id);
+  }
   deleteTraveller(id:number){
     return this._http.delete(this.url+id,{headers:new HttpHeaders().set(this.content,this.header)});
   }
@@ -22,5 +26,10 @@ export class TravelerserviceService {
   {
     let body=JSON.stringify(item);
   return this._http.post(this.url,body,{headers: new HttpHeaders().set(this.content,this.header)});
+  }
+  editTraveler(id,item){
+    let body = JSON.stringify(item);
+    return this._http.put(this.url+id, body, { headers: new HttpHeaders().set(this.content, this.header) });
+ 
   }
 }
