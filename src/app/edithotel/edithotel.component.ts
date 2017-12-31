@@ -37,6 +37,7 @@ export class EdithotelComponent implements OnInit {
       this.feedback=data[0].hotel_feedback;
       this.city=data[0].hotel_city;
       this.rating=data[0].hotel_rating;
+      this.description=data[0].hotel_description;
     }
   );
   }
