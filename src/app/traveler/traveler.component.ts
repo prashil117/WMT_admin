@@ -22,6 +22,12 @@ export class TravelerComponent implements OnInit {
       }
     );
   }
+
+  editTraveller(item){
+    
+     this._router.navigate(['/edittraveler',item.traveller_id]);
+   }
+
   onTravellerDelete(item)
   {
   
@@ -30,10 +36,6 @@ export class TravelerComponent implements OnInit {
         this.Traveler.splice(this.Traveler.indexOf(item),1);
       }
     );
-  }
-  editTraveler(item){
- 
-    this._router.navigate(['/edittraveler',item.traveller_email]);
   }
   onNavigate()
   {

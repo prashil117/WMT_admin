@@ -24,7 +24,7 @@ const routing:Routes = [
     {path:'adduser',component:AdduserComponent},
     {path:'edituser/:email_id',component:EdituserComponent},
     {path:'addtraveler',component:AddtavelerComponent},
-    {path:'edittraveler/:email',component:EdittavelerComponent},
+    {path:'edittraveler/:id',component:EdittavelerComponent},
     {path:'dashboard',component:DashboardComponent}
    
    

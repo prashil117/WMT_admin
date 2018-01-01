@@ -8,21 +8,20 @@
             <h4 class="text-muted text-center m-t-0"></h4>
             <form class="form-horizontal m-t-20">
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" [(ngModel)]="name" type="text" required="" name="name" placeholder="Traveler name"></div>
+                    <div class="col-xs-12"> <input class="form-control"  type="text" required="" placeholder="Traveler name" [(ngModel)]="name" name="name"></div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" [(ngModel)]="address" required="" name="address" placeholder="Address"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="Address" [(ngModel)]="address" name="address"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" [(ngModel)]="img" name="img" placeholder="image"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="image" [(ngModel)]="img" name="img"></div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" [(ngModel)]="city" name="city" placeholder="city"></div>
+                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="city" [(ngModel)]="city" name="city"></div>
                 </div>
                 <div class="form-group text-center m-t-40">
-                    <div class="col-xs-12"> <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Add</button></div>
-
+                    <div class="col-xs-12"> <button (click)="onUpdate()" class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Add</button></div>
                 </div>
 
             </form>

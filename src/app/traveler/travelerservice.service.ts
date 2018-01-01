@@ -15,10 +15,10 @@ export class TravelerserviceService {
     return this._http.get<Traveler>(this.url);
     //hkbdhkgbsrgbrgnrlrjl
   }
-  getTravelerById(id){
-
-    return this._http.get<Traveler[]>(this.url+id);
-  }
+  gettravellerById(id){
+    
+        return this._http.get<Traveler[]>(this.url+id);
+      }
   deleteTraveller(id:number){
     return this._http.delete(this.url+id,{headers:new HttpHeaders().set(this.content,this.header)});
   }
