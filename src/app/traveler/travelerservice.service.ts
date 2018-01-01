@@ -27,9 +27,9 @@ export class TravelerserviceService {
     let body=JSON.stringify(item);
   return this._http.post(this.url,body,{headers: new HttpHeaders().set(this.content,this.header)});
   }
-  editTraveler(id,item){
+  editTraveler(email,item){
     let body = JSON.stringify(item);
-    return this._http.put(this.url+id, body, { headers: new HttpHeaders().set(this.content, this.header) });
+    return this._http.put(this.url+email, body, { headers: new HttpHeaders().set(this.content, this.header) });
  
   }
 }
