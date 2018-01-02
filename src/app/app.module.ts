@@ -27,6 +27,7 @@ import { EdituserComponent } from './edituser/edituser.component';
 import { AddtavelerComponent } from './addtaveler/addtaveler.component';
 import { EdittavelerComponent } from './edittaveler/edittaveler.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AddtavelerComponent,
     EdittavelerComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,

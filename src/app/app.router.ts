@@ -12,7 +12,7 @@ import { AddtavelerComponent } from './addtaveler/addtaveler.component';
 import { EdittavelerComponent } from './edittaveler/edittaveler.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { EdituserComponent } from './edituser/edituser.component';
-
+import { ForgotComponent } from './forgot/forgot.component';
 const routing:Routes = [
     {path: '',redirectTo:'/login',pathMatch:'full'},
     { path: 'user',component: UserComponent},
@@ -25,8 +25,8 @@ const routing:Routes = [
     {path:'edituser/:email_id',component:EdituserComponent},
     {path:'addtraveler',component:AddtavelerComponent},
     {path:'edittraveler/:id',component:EdittavelerComponent},
-    {path:'dashboard',component:DashboardComponent}
-   
+    {path:'dashboard',component:DashboardComponent},
+   {path:'forgot',component:ForgotComponent}
    
   ];
   export const routingArray=RouterModule.forRoot(routing);
