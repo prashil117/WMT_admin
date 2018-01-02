@@ -28,6 +28,7 @@ import { AddtavelerComponent } from './addtaveler/addtaveler.component';
 import { EdittavelerComponent } from './edittaveler/edittaveler.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotComponent } from './forgot/forgot.component';
+import { EmailserviceService } from './forgot/emailservice.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { ForgotComponent } from './forgot/forgot.component';
     HttpClientModule,
     routingArray
   ],
-  providers: [UserserviceService,TravelerserviceService,HotelDataService,LoginDataService],
+  providers: [UserserviceService,TravelerserviceService,HotelDataService,LoginDataService,EmailserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
