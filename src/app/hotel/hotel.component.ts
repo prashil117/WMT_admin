@@ -56,7 +56,22 @@ export class HotelComponent implements OnInit {
     }
   }
   i:number=0;
-  checkChange(item:Hotels)
+ /* checkChange(item:Hotels)
+    {
+      
+        if(this.delarr.find(x=>x==item))
+        {
+          this.delarr.splice(this.delarr.indexOf(item),1);
+        }
+        else
+        {
+          this.delarr.push(item);
+        }
+        console.log(this.delarr);
+      
+    }*/
+
+    checkChange(item:Hotels)
     {
       
         if(this.delarr.find(x=>x==item))
@@ -70,7 +85,7 @@ export class HotelComponent implements OnInit {
         console.log(this.delarr);
       
     }
-  deleteAll()
+  /*deleteAll()
   {
     
     if(confirm("Are you sure you want to delete"))
@@ -94,6 +109,32 @@ export class HotelComponent implements OnInit {
         });
     }
   } 
-
+}*/
+deleteAll()
+{
   
+  if(confirm("Are you sure you want to delete"))
+  {
+    
+    this._data.deleteAllHotels(this.delarr).subscribe(
+      (data:any)=>{
+        for(this.i=0;this.i<this.delarr.length;this.i++)
+        {
+          this.hotel.splice(this.hotel.indexOf(this.delarr[this.i]),1);
+          console.log("DONE");
+        }
+        this.hotel1=[];
+      },
+      function(err)
+      {
+        console.log(err);
+      },
+      function()
+      {
+      });
+  }
+} 
 }
+
+
+

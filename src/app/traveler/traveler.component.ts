@@ -71,7 +71,7 @@ export class TravelerComponent implements OnInit {
         console.log(this.delarr);
       
     }
-  deleteAll()
+  /*deleteAll()
   {
     
     if(confirm("Are you sure you want to delete"))
@@ -95,6 +95,30 @@ export class TravelerComponent implements OnInit {
         });
     }
   } 
+}*/
 
-
+deleteAll()
+{
+  
+  if(confirm("Are you sure you want to delete"))
+  {
+    
+    this.data1.deleteAllTraveler(this.delarr).subscribe(
+      (data:any)=>{
+        for(this.i=0;this.i<this.delarr.length;this.i++)
+        {
+          this.Traveler.splice(this.Traveler.indexOf(this.delarr[this.i]),1);
+          console.log("DONE");
+        }
+        this.Traveler1=[];
+      },
+      function(err)
+      {
+        console.log(err);
+      },
+      function()
+      {
+      });
+  }
+} 
 }
