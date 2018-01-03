@@ -5,6 +5,7 @@ import { Hotels } from './hotel/hotelc';
 @Injectable()
 export class HotelDataService {
   public url:string="http://localhost:3000/hotel/";
+  public url1:string="http://localhost:3000/deletehotels";
   content:string="Content-Type";
   header:string="application/json";
   constructor(public _http:HttpClient) { }
@@ -29,5 +30,10 @@ export class HotelDataService {
     let body = JSON.stringify(item);
     return this._http.put(this.url+id, body, { headers: new HttpHeaders().set(this.content, this.header) });
  
+  }
+  deleteAllHotels(item:Hotels[])
+  {
+    let body = JSON.stringify(item);
+    return this._http.post(this.url1, body, { headers: new HttpHeaders().set(this.content, this.header) });
   }
 }

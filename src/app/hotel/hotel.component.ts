@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class HotelComponent implements OnInit {
   public hotel:Hotels[]=[];
   public hotel1:Hotels[]=[];
+  public delarr:Hotels[]=[];
   txtsearch:string="";
   constructor(public _data:HotelDataService,public _router:Router) { }
 
@@ -54,4 +55,45 @@ export class HotelComponent implements OnInit {
       
     }
   }
+  i:number=0;
+  checkChange(item:Hotels)
+    {
+      
+        if(this.delarr.find(x=>x==item))
+        {
+          this.delarr.splice(this.delarr.indexOf(item),1);
+        }
+        else
+        {
+          this.delarr.push(item);
+        }
+        console.log(this.delarr);
+      
+    }
+  deleteAll()
+  {
+    
+    if(confirm("Are you sure you want to delete"))
+    {
+      
+      this._data.deleteAllHotels(this.delarr).subscribe(
+        (data:any)=>{
+          for(this.i=0;this.i<this.delarr.length;this.i++)
+          {
+            this.hotel.splice(this.hotel.indexOf(this.delarr[this.i]),1);
+            console.log("DONE");
+          }
+          this.hotel=[];
+        },
+        function(err)
+        {
+          console.log(err);
+        },
+        function()
+        {
+        });
+    }
+  } 
+
+  
 }

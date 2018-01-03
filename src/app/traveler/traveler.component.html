@@ -34,7 +34,7 @@
                                                 <tbody>
                                                     <tr *ngFor="let item of Traveler">
                                                         <td>
-                                                            <input type="checkbox" name="travelercheck">
+                                                            <input type="checkbox" (change)="checkChange(item)" name="travelercheck">
                                                         </td>
                                                         <td>
                                                             {{item.traveller_email}}
@@ -59,6 +59,8 @@
                                                         </td>
                                                     </tr>
                                                 </tbody>
+                                                <button (click)="deleteAll()" class=" ion ion-trash-b btn btn-danger"><span> Delete All </span></button>
+
                                             </table>
                                         </div>
                                     </div>

@@ -6,6 +6,7 @@ export class TravelerserviceService {
 
   
   public url:string="http://localhost:3000/travellers/";
+  public url1:string="http://localhost:3000/deletealltrav";
   constructor(public _http:HttpClient) { }
 
   content:string="Content-Type";
@@ -31,5 +32,10 @@ export class TravelerserviceService {
     let body = JSON.stringify(item);
     return this._http.put(this.url+email, body, { headers: new HttpHeaders().set(this.content, this.header) });
  
+  }
+  deleteAllTraveler(item:Traveler[])
+  {
+    let body = JSON.stringify(item);
+    return this._http.post(this.url1, body, { headers: new HttpHeaders().set(this.content, this.header) });
   }
 }

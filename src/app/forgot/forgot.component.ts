@@ -22,13 +22,14 @@ emailId:string='';
   }
   onSend()
   {
-  
+    
     if(this.email=="")
     {
-      this.msg="enter email please";
+      alert("please enter email address");
     }
     else
     {
+      
       this._data.getUserById(this.email).subscribe(
         (data:User[])=>{
           if(data.length==1){
@@ -37,9 +38,13 @@ emailId:string='';
             this._email.sendMail(new Forget(msg,this.email,"Reseting EMail Password")).subscribe(
               (data:any)=>
               {
+                  
                 console.log("msg sent");
-              }
-            );
+              });
+            alert("Email has been sent to your "+ this.email);
+          }
+          else{
+            alert("please enter correct email address");
           }
         }
       );

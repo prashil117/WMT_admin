@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(public _router:Router, public data:LoginDataService) { }
 
   ngOnInit() {
+    alert("welcome");
   }
   onLogin() {
     let item = new User(this.email_id,this.password,'', '', '', '', '','');
@@ -27,14 +28,18 @@ export class LoginComponent implements OnInit {
         if (data1.length==1) {
           localStorage.setItem('Email',this.email_id);
         this._router.navigate(['/dashboard']);
-          
         }
         else {
-          
-         alert("Something Wrong");
+          if (this.email_id.length==1) {
+              if( this.password.length!=1)
+              {
+            alert("password is wrong");
+              }
+        }else{
+              alert("eamil is worng");   
         }
-
-      },
+      }
+    },
       function (e) {
         alert(e);
       }

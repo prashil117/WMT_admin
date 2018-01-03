@@ -7,6 +7,7 @@ import { User } from './userc';
 export class UserserviceService {
 
   public url: string = "http://localhost:3000/users/";
+  public url1:string="http://localhost:3000/deletalluser/";
   constructor(public _http: HttpClient) { }
   content: string = "Content-Type";
   header: string = "application/json";
@@ -30,8 +31,9 @@ export class UserserviceService {
     return this._http.put(this.url+id, body, { headers: new HttpHeaders().set(this.content, this.header) });
  
   }
-
-  
-
+  deleteAllUser(item:User[])
+  {
+    let body = JSON.stringify(item);
+    return this._http.post(this.url1, body, { headers: new HttpHeaders().set(this.content, this.header) });
+  }
 }
-

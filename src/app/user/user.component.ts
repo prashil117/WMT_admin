@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
   public users:User[]=[];
   public users1:User[]=[];
+  public delarr:User[]=[];
   public no:User[]=[];
   public no1:User[]=[];
   txtsearch:string="";
@@ -54,6 +55,44 @@ editUser(item){
       
     }
   }
- 
+  i:number=0;
 
+  checkChange(item:User)
+    {
+      
+        if(this.delarr.find(x=>x==item))
+        {
+          this.delarr.splice(this.delarr.indexOf(item),1);
+        }
+        else
+        {
+          this.delarr.push(item);
+        }
+        console.log(this.delarr);
+      
+    }
+  deleteAll()
+  {
+    
+    if(confirm("Are you sure you want to delete"))
+    {
+      
+      this.data1.deleteAllUser(this.delarr).subscribe(
+        (data:any)=>{
+          for(this.i=0;this.i<this.delarr.length;this.i++)
+          {
+            this.users.splice(this.users.indexOf(this.delarr[this.i]),1);
+            console.log("DONE");
+          }
+          this.users1=[];
+        },
+        function(err)
+        {
+          console.log(err);
+        },
+        function()
+        {
+        });
+    }
+  } 
 }
