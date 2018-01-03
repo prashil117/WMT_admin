@@ -33,7 +33,7 @@ emailId:string='';
       this._data.getUserById(this.email).subscribe(
         (data:User[])=>{
           if(data.length==1){
-            var msg=data[0].user_name+" your pass is "+data[0].user_password;
+            var msg=data[0].user_name+" your password is "+data[0].user_password;
             console.log(msg);
             this._email.sendMail(new Forget(msg,this.email,"Reseting EMail Password")).subscribe(
               (data:any)=>
