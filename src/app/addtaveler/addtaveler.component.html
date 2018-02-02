@@ -24,8 +24,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12"> <input class="form-control" type="text" required="" name="image" id="image" [(ngModel)]="image" placeholder="image">
+                    <div class="col-xs-12"> <!--<input class="form-control" type="text" required="" placeholder="image" [(ngModel)]="user_photo" name="user_photo" id="user_photo">-->
+                        <input type="file" id="inputpic" (change)="fileChange(input)" #input>
+                    <div *ngFor="let file_src of file_srcs; let i = index">
+                        <img [attr.src]='file_src' alt="" />
                     </div>
+                </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12"> <input class="form-control" type="text" required="" name="city" id="city" [(ngModel)]="city" placeholder="city">

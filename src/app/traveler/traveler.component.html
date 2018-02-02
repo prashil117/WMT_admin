@@ -24,6 +24,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th></th>
+                                                        <th>Image</th>
                                                         <th>Traveller Email</th>
                                                         <th>Traveller Name</th>
                                                         <th>Traveller Address</th>
@@ -36,6 +37,7 @@
                                                         <td>
                                                             <input type="checkbox" (change)="checkChange(item)" name="travelercheck">
                                                         </td>
+                                                        <td><img src="http://localhost:3000/{{item.traveller_img}}"></td>
                                                         <td>
                                                             {{item.traveller_email}}
                                                         </td>

@@ -24,6 +24,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th></th>
+                                                        <th>Image</th>
                                                         <th>Name</th>
                                                         <th>Address</th>
                                                         <th>Feedback</th>
@@ -39,6 +40,7 @@
                                                         <td>
                                                             <input type="checkbox" (change)="checkChange(item)" name="hotelcheck">
                                                         </td>
+                                                        <td><img src="http://localhost:3000/{{item.hotel_img}}"></td>
                                                         <td>
                                                             {{item.hotel_name}}
                                                         </td>
