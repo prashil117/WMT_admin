@@ -4,6 +4,8 @@ import {LoginDataService  } from '../login-data.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from './loginc';
+import {FormControl} from "@angular/forms";
+
 
 @Component({
   selector: 'app-login',
@@ -11,17 +13,23 @@ import { Login } from './loginc';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  email_id:string="jollyprashil@gmail.com";
-  password:string="prashil117";
+  email_id:string;
+  pass:string;
 
-
+  inpemail:string="abc";
+  inpPass:string="1234";
   constructor(public _router:Router, public data:LoginDataService) { }
 
   ngOnInit() {
     alert("welcome");
   }
-  onLogin() {
-    let item = new User(this.email_id,this.password,'', '', '', '', '','');
+  onLogin(login) {
+    
+    this.email_id=login.value.email_id;
+    this.pass=login.value.pass;
+    console.log(this.email_id); 
+    console.log(this.pass);
+    let item = new User(this.email_id,this.pass,'', '', '', '', '','');
     this.data.login(item).subscribe(
       (data1:User[]) => {
         console.log(data1);
@@ -31,12 +39,12 @@ export class LoginComponent implements OnInit {
         }
         else {
           if (this.email_id.length==1) {
-              if( this.password.length!=1)
+              if( this.pass.length!=1)
               {
             alert("password is wrong");
               }
         }else{
-              alert("eamil is worng");   
+              alert("Incorrect Email and Password");   
         }
       }
     },
@@ -44,6 +52,14 @@ export class LoginComponent implements OnInit {
         alert(e);
       }
     );
+  }
+
+  onAdd(login)
+  {
+    /*console.log(this.inpemail);
+    console.log(this.inpPass);*/
+    console.log(login.value.inpemail); 
+    console.log(login.value.inpPass);
   }
 }
 

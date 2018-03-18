@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../user/userservice.service';
+import { Router } from '@angular/router';
 import { User } from '../user/userc';
 
 @Component({
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit {
   name:string="";
   img:string="";
 
-  constructor(public _data:UserserviceService) { }
+  constructor(public _router:Router,public _data:UserserviceService) { }
 
   ngOnInit() {
     this.email=localStorage.getItem('Email');
@@ -23,6 +24,13 @@ export class NavbarComponent implements OnInit {
         this.img=data[0].user_photo;
       }
     );
+  }
+
+  logout()
+  {
+    alert("Hello");
+   // localStorage.setItem('','');
+    this._router.navigate(['/login']);
   }
 
 }

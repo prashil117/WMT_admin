@@ -23,10 +23,16 @@ export class TravelerserviceService {
   deleteTraveller(id:number){
     return this._http.delete(this.url+id,{headers:new HttpHeaders().set(this.content,this.header)});
   }
-  addTraveler(item)
+  /*addTraveler(item)
   {
     let body=JSON.stringify(item);
   return this._http.post(this.url,body,{headers: new HttpHeaders().set(this.content,this.header)});
+  }*/
+  addTraveler(item:FormData)
+  {
+   // let body=JSON.stringify(item);
+  //return this._http.post(this.url,body,{headers: new HttpHeaders().set(this.content,this.header)});
+  return this._http.post(this.url,item);
   }
   editTraveler(email,item){
     let body = JSON.stringify(item);

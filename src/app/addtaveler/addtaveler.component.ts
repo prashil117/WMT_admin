@@ -19,13 +19,14 @@ export class AddtavelerComponent implements OnInit {
   public file_srcs:string[]=[];
   public debug_size_before:string[]=[];
   public debug_size_after:string[]=[];
+  selectedFile:File=null;
 
   constructor(public _data:TravelerserviceService,public _router:Router,public changeDetectorRef:ChangeDetectorRef) { }
 
   ngOnInit() {
   }
 
-  fileChange(input){
+  /*fileChange(input){
     console.log("done");
     this.readFiles(input.files);
 
@@ -109,12 +110,34 @@ export class AddtavelerComponent implements OnInit {
       // callback with the results
       callback(dataUrl, img.src.length, dataUrl.length);
     };
-  }
+  }*/
 
-  onAdd(){
+  onFileSelected(value){
+    this.selectedFile=<File>value.target.files[0];
+    
+    console.log(value);
+      }
 
-    let item=new Traveler(this.name,this.email_id,this.password,this.address,this.traveller_img,this.city);
-    this._data.addTraveler(item).subscribe(
+  onAdd(addform){
+
+    this.email_id=addform.value.email_id;
+    this.password=addform.value.password;
+    this.name=addform.value.name;
+    this.address=addform.value.address;
+    this.city=addform.value.city;
+    console.log(name);
+    const fd=new FormData();
+
+    fd.append('traveller_name',this.name);
+    fd.append('traveller_email',this.email_id);
+    fd.append('traveller_address',this.address);
+    fd.append('traveller_password',this.password);
+    fd.append('city',this.city);
+    fd.append('image',this.selectedFile,this.selectedFile.name);
+
+   // let item=new Traveler(this.name,this.email_id,this.password,this.address,this.traveller_img,this.city);
+  //  this._data.addTraveler(item).subscribe(
+    this._data.addTraveler(fd).subscribe(
       (data:any)=>{
         console.log(data);
         this._router.navigate(['/traveler']);

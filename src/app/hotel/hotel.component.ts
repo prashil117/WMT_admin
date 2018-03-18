@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
 import {  Hotels} from "./hotelc";
 import { NavbarComponent } from '../navbar/navbar.component';
 import { HotelDataService } from '../hotel-data.service';
@@ -14,6 +15,8 @@ export class HotelComponent implements OnInit {
   public hotel1:Hotels[]=[];
   public delarr:Hotels[]=[];
   txtsearch:string="";
+  displayedColumns = ['hotel_img','hotel_name', 'hotel_address','hotel_feedback','hotel_city','hotel_rating','hotel_description','hotel_action'];
+  dataSource: MatTableDataSource<Hotels>;
   constructor(public _data:HotelDataService,public _router:Router) { }
 
   ngOnInit() {
@@ -21,8 +24,16 @@ export class HotelComponent implements OnInit {
       (data:any)=>{
         this.hotel=data;
         this.hotel1=data;
+        this.dataSource = new MatTableDataSource<Hotels>(this.hotel);
+        console.log(this.hotel);
       }
     );
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
   editHotel(item){

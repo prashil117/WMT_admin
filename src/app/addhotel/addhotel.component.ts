@@ -20,12 +20,19 @@ export class AddhotelComponent implements OnInit {
   public file_srcs:string[]=[];
   public debug_size_before:string[]=[];
   public debug_size_after:string[]=[];
+  selectedFile:File=null;
   constructor(public _data:HotelDataService,public _router:Router,public changeDetectorRef:ChangeDetectorRef) { }
 
   ngOnInit() {
   }
 
-  fileChange(input){
+  onFileSelected(value){
+    this.selectedFile=<File>value.target.files[0];
+    
+    console.log(value);
+      }
+
+  /*fileChange(input){
     console.log("done");
     this.readFiles(input.files);
 
@@ -109,12 +116,31 @@ export class AddhotelComponent implements OnInit {
       // callback with the results
       callback(dataUrl, img.src.length, dataUrl.length);
     };
-  }
+  }*/
 
-  onAdd()
+  onAdd(addform)
   {
-    let item=new Hotels(this.hotel_name,this.hotel_address,this.hotel_img,this.hotel_feedback,this.hotel_city,this.hotel_rating,this.hotel_description);
-    this._data.addHotel(item).subscribe(
+    
+    this.hotel_rating=addform.value.hotel_rating;
+    this.hotel_feedback=addform.value.hotel_feedback;
+    this.hotel_description=addform.value.hotel_description;
+    this.hotel_name=addform.value.hotel_name;
+    this.hotel_address=addform.value.hotel_address;
+    this.hotel_city=addform.value.hotel_city;
+
+    const fd=new FormData();
+    fd.append('hotel_description',this.hotel_description);
+    fd.append('hotel_name',this.hotel_name);
+    fd.append('hotel_address',this.hotel_address);
+    fd.append('hotel_feedback',this.hotel_feedback);
+    fd.append('hotel_city',this.hotel_city);
+    fd.append('image',this.selectedFile,this.selectedFile.name);
+    fd.append('hotel_rating',this.hotel_rating);
+    
+   let item=new Hotels(this.hotel_name,this.hotel_address,this.hotel_img,this.hotel_feedback,this.hotel_city,this.hotel_rating,this.hotel_description);
+   console.log(item);
+   // this._data.addHotel(item).subscribe(
+    this._data.addHotel(fd).subscribe(
       (data:any)=>{
         console.log(data);
         this._router.navigate(['/hotels']);

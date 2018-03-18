@@ -17,9 +17,9 @@ export class HotelDataService {
     
         return this._http.get<Hotels[]>(this.url+id);
       }
-  addHotel(hotel:Hotels){
-    let body=JSON.stringify(hotel);
-    return this._http.post(this.url,body,{headers:new HttpHeaders().set(this.content,this.header)});
+  addHotel(item:FormData){
+  //  let body=JSON.stringify(hotel);
+    return this._http.post(this.url,item);
   }
   deleteHotel(id:string){
     return this._http.delete(this.url+id,{headers:new HttpHeaders().set(this.content,this.header)});

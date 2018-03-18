@@ -11,13 +11,13 @@ import { Hotels } from "../hotel/hotelc";
 export class EdithotelComponent implements OnInit {
   public _subscription:Subscription;
   id:number;
-  name:string="";
-  address:string="";
+  name1:string="";
+  address1:string="";
   img:string="";
-  feedback:string="";
-  city:string="";
-  rating:string="";
-  description:string="";
+  feedback1:string="";
+  city1:string="";
+  rating1:string="";
+  description1:string="";
 
   constructor(public _router:Router,public _activatedRoute:ActivatedRoute,public _data:HotelDataService) { }
 
@@ -31,18 +31,18 @@ export class EdithotelComponent implements OnInit {
 
   this._data.getHotelById(this.id).subscribe(
     (data:Hotels[])=>{
-      this.name=data[0].hotel_name;
-      this.address=data[0].hotel_address;
+      this.name1=data[0].hotel_name;
+      this.address1=data[0].hotel_address;
       this.img=data[0].hotel_img;
-      this.feedback=data[0].hotel_feedback;
-      this.city=data[0].hotel_city;
-      this.rating=data[0].hotel_rating;
-      this.description=data[0].hotel_description;
+      this.feedback1=data[0].hotel_feedback;
+      this.city1=data[0].hotel_city;
+      this.rating1=data[0].hotel_rating;
+      this.description1=data[0].hotel_description;
     }
   );
   }
   onUpdate(){
-    let hotel=new Hotels(this.name,this.address,this.img,this.feedback,this.city,this.rating,this.description);
+    let hotel=new Hotels(this.name1,this.address1,this.img,this.feedback1,this.city1,this.rating1,this.description1);
     this._data.editHotel(this.id,hotel).subscribe(
       ()=>{
         this._router.navigate(['/hotels']);

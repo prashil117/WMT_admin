@@ -1,6 +1,7 @@
 import { Traveler } from './travelerc';
 import { TravelerserviceService } from './travelerservice.service';
 import { Component, OnInit } from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,14 +15,24 @@ export class TravelerComponent implements OnInit {
   public delarr:Traveler[]=[];
   public Traveler1:Traveler[]=[];
   txtsearch:string="";
+  displayedColumns = ['traveller_img','traveller_name', 'traveller_email','traveller_address','city','traveller_action'];
+  dataSource: MatTableDataSource<Traveler>;
   
   ngOnInit() {
     this.data1.getAlltraveller().subscribe(
       (data:any)=>{
         this.Traveler=data;
         this.Traveler1=data;
+        this.dataSource = new MatTableDataSource<Traveler>(this.Traveler);
+        console.log(this.Traveler);
       }
     );
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
   editTraveller(item){

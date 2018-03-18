@@ -6,9 +6,10 @@
             <a routerLink="/user">Back</a>
             <h3 class="text-center m-t-0 m-b-15"> <label class="logo logo-admin"><span>Edit</span>User</label></h3>
             <h4 class="text-muted text-center m-t-0"></h4>
-            <form class="form-horizontal m-t-20">
-
-                <div class="form-group">
+               <!--  <form class="form-horizontal m-t-20" (ngSubmit)="onUpdate(editform)" #editform="ngForm">-->
+                   <form>
+    
+               <!-- <div class="form-group">
                     <div class="col-xs-12"> <input class="form-control" type="text" required name="name" [(ngModel)]="name" placeholder="user name"></div>
                 </div>
 
@@ -33,7 +34,64 @@
 
                 </div>
 
-            </form>
+            </form>-->
+            <div class="form-group">
+                    <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Email" class="example-full-width">
+                        <input matInput ngModel required email name="email" type="email" placeholder="Enter email" [(ngModel)]="email1" #email="ngModel" >
+                         <mat-error *ngIf="email.hasError('required')" >Enter Email</mat-error>
+                         <mat-error *ngIf="email.hasError('email_id')" >Enter valid Email Address</mat-error>                    
+                      </mat-form-field> <!--<input class="form-control" type="text" [(ngModel)]='email_id' required name="email_id" id="email_id">--></div>
+                </div>
+
+                    <div class="form-group">
+                            <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Name" class="example-full-width">
+                                <input matInput ngModel required  name="name" type="text" placeholder="Enter Name" [(ngModel)]="name1"  #name="ngModel"  >
+                                 <mat-error *ngIf="name.hasError('required')" >Enter Name</mat-error>
+                              </mat-form-field><!--<input type="password" class="form-control" [(ngModel)]='password' required name="password" id="password">--></div>
+                        </div>
+
+                        <div class="form-group">
+                                <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Address" class="example-full-width">
+                                    <input matInput ngModel required  name="address" type="text" placeholder="Enter Address" [(ngModel)]="address1" #address="ngModel">
+                                     <mat-error *ngIf="address.hasError('required')" >Enter Address</mat-error>
+                                  </mat-form-field><!--<input type="password" class="form-control" [(ngModel)]='password' required name="password" id="password">--></div>
+                            </div>
+
+                            
+                        <div class="form-group">
+                                <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Address" class="example-full-width">
+                                        <input matInput ngModel [matDatepicker]="picker" placeholder="Choose a date" name="bod1" #bod="ngModel">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    <mat-error *ngIf="address.hasError('required')">Enter Address</mat-error>
+                                  </mat-form-field><!--<input type="password" class="form-control" [(ngModel)]='password' required name="password" id="password">--></div>
+                            </div>
+                            
+                            <!--<div class="form-group">
+                                    <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="image" [(ngModel)]="user_photo" name="user_photo" id="user_photo">
+                                     <input type="file" id="inputpic" (change)="fileChange(input)" #input>
+                                 <div *ngFor="let file_src of file_srcs; let i = index">
+                                     <img [attr.src]='file_src' alt="" />
+                                 </div>
+                                 </div>
+                                 </div>-->
+
+                                 <div class="form-group">
+                                        <div class="col-xs-12"> <input type="radio" [checked]="gender=='male'" [(ngModel)]="gender" name="gender" value="male"> male <input type="radio" name="gender" [(ngModel)]="gender" [checked]="gender=='female'" value="female"> female
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">
+                                        <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Number" class="example-full-width">
+                                            <input matInput ngModel required  name="mobile" type="text" placeholder="Enter Address" [(ngModel)]="mobile1" #mobile="ngModel">
+                                             <mat-error *ngIf="mobile.hasError('required')" >Enter Mobile No</mat-error>
+                                          </mat-form-field><!--<input type="password" class="form-control" [(ngModel)]='password' required name="password" id="password">--></div>
+                                    </div>
+            <div class="form-group text-center m-t-40">
+                <div  class="col-xs-12"> <button type="submit" class="btn btn-primary btn-block btn-lg waves-effect waves-light" (click)="onUpdate()" >Add</button></div>
+
+            </div>
+        </form>
         </div>
     </div>
 </div>

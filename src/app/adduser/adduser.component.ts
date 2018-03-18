@@ -21,12 +21,19 @@ export class AdduserComponent implements OnInit {
   public file_srcs:string[]=[];
   public debug_size_before:string[]=[];
   public debug_size_after:string[]=[];
+  selectedFile:File=null;
   constructor(public _router:Router,public _data:UserserviceService,public changeDetectorRef:ChangeDetectorRef) { }
 
   ngOnInit() {
   }
 
-  fileChange(input){
+  onFileSelected(value){
+    this.selectedFile=<File>value.target.files[0];
+    
+    console.log(value);
+      }
+
+  /*fileChange(input){
     console.log("done");
     this.readFiles(input.files);
 
@@ -110,12 +117,29 @@ export class AdduserComponent implements OnInit {
       // callback with the results
       callback(dataUrl, img.src.length, dataUrl.length);
     };
-  }
+  }*/
 
-  onAdd(){
+  onAdd(addform){
 
-    let item=new User(this.email_id,this.password,this.user_name,this.address,this.bod,this.gender,this.user_photo,this.mobile);
-    this._data.addUser(item).subscribe(
+    this.email_id=addform.value.email_id;
+    this.password=addform.value.password;
+    this.user_name=addform.value.user_name;
+    this.address=addform.value.address;
+    this.mobile=addform.value.mobile;
+    this.bod=addform.value.bod;
+ //   let item=new User(this.email_id,this.password,this.user_name,this.address,this.bod,this.gender,this.user_photo,this.mobile);
+ const fd=new FormData();
+ fd.append('user_email_id',this.email_id);
+ fd.append('user_password',this.password);
+ fd.append('user_name',this.user_name);
+ fd.append('user_address',this.address);
+ fd.append('user_DO_B',this.bod);
+ fd.append('user_gender',this.gender);
+ fd.append('image',this.selectedFile,this.selectedFile.name);
+ fd.append('user_mobile_no',this.mobile);
+    console.log(fd);
+    //this._data.addUser(item).subscribe(
+      this._data.addUser(fd).subscribe(
       (data:any)=>{
         console.log(data);
         this._router.navigate(['/user']);

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit,ViewChild } from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
 import { UserserviceService } from './userservice.service';
 import { User } from "./userc";
 import { Router } from '@angular/router';
@@ -15,24 +16,40 @@ export class UserComponent implements OnInit {
   public no:User[]=[];
   public no1:User[]=[];
   txtsearch:string="";
+  displayedColumns = ['user_photo', 'user_email_id','user_name','user_address','user_DOB','user_gender','user_mobile_no','user_action'];
+  dataSource: MatTableDataSource<User>;
   constructor(public data1:UserserviceService,public _router:Router) { }
-
+  
   ngOnInit() {
-    this.data1.getAllUsers().subscribe(
+   this.data1.getAllUsers().subscribe(
       (data:any)=>{
         this.users=data;
         this.users1=data;
-      
+        this.dataSource = new MatTableDataSource<User>(this.users);
+        console.log(this.users);
       }
     );
+   
+    
   }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+  /*ngAfterViewInit(){
+    this.dataSource.paginator=this.paginator;
+    this.dataSource.sort=this.sort;
+  }*/
 editUser(item){
  
   this._router.navigate(['/edituser',item.user_email_id]);
+  console.log(item);
 }
   deletuser(item)
   {
-    this.data1.deleteUser(item.user_email_id).subscribe(
+   this.data1.deleteUser(item.user_email_id).subscribe(
       (data:any)=>{
         this.users.splice(this.users.indexOf(item),1);
       }

@@ -1,8 +1,9 @@
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule,HttpHeaders } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -30,6 +31,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { EmailserviceService } from './forgot/emailservice.service';
 
+
+import { MatInputModule,MatFormFieldModule,MatButtonModule,MatCardModule,MatTableModule,MatPaginatorModule,MatSortModule,MatIconModule,MatDatepickerModule,MatRadioModule,MatNativeDateModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,12 +51,20 @@ import { EmailserviceService } from './forgot/emailservice.service';
     EdittavelerComponent,
     LoginComponent,
     DashboardComponent,
-    ForgotComponent
+    ForgotComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,MatSortModule,MatIconModule,MatDatepickerModule,MatRadioModule,MatNativeDateModule,
     routingArray
   ],
   providers: [UserserviceService,TravelerserviceService,HotelDataService,LoginDataService,EmailserviceService],

@@ -12,10 +12,11 @@ import { TravelerserviceService } from '../traveler/travelerservice.service';
 export class EdittavelerComponent implements OnInit {
   public _subscription:Subscription;
   id:number;
-  name:string="";
-  address:string="";
-  img:string="";
-  city:string="";
+  name1:string="";
+  address1:string="";
+  img1:string="";
+  email1:string="";
+  city1:string="";
   constructor(public _router:Router,public _activatedRoute:ActivatedRoute,public _data:TravelerserviceService) { }
 
   ngOnInit() {
@@ -28,15 +29,16 @@ export class EdittavelerComponent implements OnInit {
 
   this._data.gettravellerById(this.id).subscribe(
     (data:Traveler[])=>{
-      this.name=data[0].traveller_name;
-      this.address=data[0].traveller_address;
-      this.img=data[0].traveller_img;
-      this.city=data[0].city;
+      this.name1=data[0].traveller_name;
+      this.address1=data[0].traveller_address;
+      this.img1=data[0].traveller_img;
+      this.city1=data[0].city;
+      this.email1=data[0].traveller_email;
     }
   );
 }
   onUpdate(){
-    let traveler=new Traveler(this.name,'','',this.address,this.img,this.city);
+    let traveler=new Traveler(this.name1,'','',this.address1,this.img1,this.city1);
     this._data.editTraveler(this.id,traveler).subscribe(
       ()=>{
         this._router.navigate(['/traveler']);
