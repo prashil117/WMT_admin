@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  @ViewChild(MatPaginator)paginator:MatPaginator;
   public users:User[]=[];
   public users1:User[]=[];
   public delarr:User[]=[];
   public no:User[]=[];
   public no1:User[]=[];
   txtsearch:string="";
-  displayedColumns = ['user_photo', 'user_email_id','user_name','user_address','user_DOB','user_gender','user_mobile_no','user_action'];
+  displayedColumns = ['check','user_photo', 'user_email_id','user_name','user_address','user_DOB','user_gender','user_mobile_no','user_action'];
   dataSource: MatTableDataSource<User>;
   constructor(public data1:UserserviceService,public _router:Router) { }
   
@@ -26,6 +27,7 @@ export class UserComponent implements OnInit {
         this.users=data;
         this.users1=data;
         this.dataSource = new MatTableDataSource<User>(this.users);
+        this.dataSource.paginator=this.paginator;
         console.log(this.users);
       }
     );

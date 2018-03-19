@@ -1,6 +1,6 @@
 import { Traveler } from './travelerc';
 import { TravelerserviceService } from './travelerservice.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
 import { Router } from '@angular/router';
 
@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./traveler.component.css']
 })
 export class TravelerComponent implements OnInit {
+  @ViewChild(MatPaginator)paginator:MatPaginator;
   constructor(public data1:TravelerserviceService,public _router:Router) { }
   public Traveler:Traveler[]=[];
   public delarr:Traveler[]=[];
   public Traveler1:Traveler[]=[];
   txtsearch:string="";
-  displayedColumns = ['traveller_img','traveller_name', 'traveller_email','traveller_address','city','traveller_action'];
+  displayedColumns = ['check','traveller_img','traveller_name', 'traveller_email','traveller_address','city','traveller_action'];
   dataSource: MatTableDataSource<Traveler>;
   
   ngOnInit() {
@@ -24,6 +25,7 @@ export class TravelerComponent implements OnInit {
         this.Traveler=data;
         this.Traveler1=data;
         this.dataSource = new MatTableDataSource<Traveler>(this.Traveler);
+        this.dataSource.paginator=this.paginator;
         console.log(this.Traveler);
       }
     );

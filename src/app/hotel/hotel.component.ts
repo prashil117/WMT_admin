@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
 import {  Hotels} from "./hotelc";
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -11,11 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./hotel.component.css']
 })
 export class HotelComponent implements OnInit {
+  @ViewChild(MatPaginator)paginator:MatPaginator;
   public hotel:Hotels[]=[];
   public hotel1:Hotels[]=[];
   public delarr:Hotels[]=[];
   txtsearch:string="";
-  displayedColumns = ['hotel_img','hotel_name', 'hotel_address','hotel_feedback','hotel_city','hotel_rating','hotel_description','hotel_action'];
+  displayedColumns = ['check','hotel_img','hotel_name', 'hotel_address','hotel_feedback','hotel_city','hotel_rating','hotel_description','hotel_action'];
   dataSource: MatTableDataSource<Hotels>;
   constructor(public _data:HotelDataService,public _router:Router) { }
 
@@ -25,6 +26,7 @@ export class HotelComponent implements OnInit {
         this.hotel=data;
         this.hotel1=data;
         this.dataSource = new MatTableDataSource<Hotels>(this.hotel);
+        this.dataSource.paginator=this.paginator;
         console.log(this.hotel);
       }
     );

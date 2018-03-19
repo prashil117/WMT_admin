@@ -38,21 +38,21 @@
 
             <form>
                     <div class="form-group">
-                            <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Name" class="example-full-width">
+                            <div class="col-xs-12"> <mat-form-field class="example-full-width">
                                 <input matInput ngModel required  name="name" type="text" placeholder="Enter Name" [(ngModel)]="name1"  #name="ngModel"  >
                                  <mat-error *ngIf="name.hasError('required')" >Enter Name</mat-error>
                               </mat-form-field><!--<input type="password" class="form-control" [(ngModel)]='password' required name="password" id="password">--></div>
                         </div>
     
                         <div class="form-group">
-                                <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Address" class="example-full-width">
+                                <div class="col-xs-12"> <mat-form-field class="example-full-width">
                                     <input matInput ngModel required  name="address" type="text" placeholder="Enter Address" [(ngModel)]="address1" #address="ngModel">
                                      <mat-error *ngIf="address.hasError('required')" >Enter Address</mat-error>
                                   </mat-form-field><!--<input type="password" class="form-control" [(ngModel)]='password' required name="password" id="password">--></div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Email" class="example-full-width">
+                                <div class="col-xs-12"> <mat-form-field class="example-full-width">
                                     <input matInput ngModel required email name="feedback" type="text" placeholder="Enter email" [(ngModel)]="feedback1" #feedback="ngModel" >
                                      <mat-error *ngIf="feedback.hasError('required')" >Enter Email</mat-error>
                                      <mat-error *ngIf="feedback.hasError('email_id')" >Enter valid Email Address</mat-error>                    
@@ -60,21 +60,21 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Name" class="example-full-width">
+                                <div class="col-xs-12"> <mat-form-field  class="example-full-width">
                                     <input matInput ngModel required  name="city" type="text" placeholder="Enter Name" [(ngModel)]="city1"  #city="ngModel"  >
                                      <mat-error *ngIf="city.hasError('required')" >Enter Name</mat-error>
                                   </mat-form-field><!--<input type="password" class="form-control" [(ngModel)]='password' required name="password" id="password">--></div>
                             </div>
         
                             <div class="form-group">
-                                    <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Address" class="example-full-width">
+                                    <div class="col-xs-12"> <mat-form-field  class="example-full-width">
                                         <input matInput ngModel required  name="rating" type="text" placeholder="Enter Address" [(ngModel)]="rating1" #rating="ngModel">
                                          <mat-error *ngIf="rating.hasError('required')" >Enter Address</mat-error>
                                       </mat-form-field><!--<input type="password" class="form-control" [(ngModel)]='password' required name="password" id="password">--></div>
                                 </div>
     
                                 <div class="form-group">
-                                    <div class="col-xs-12"> <mat-form-field hintLabel="Enter Valid Email" class="example-full-width">
+                                    <div class="col-xs-12"> <mat-form-field  class="example-full-width">
                                         <input matInput ngModel required email name="description" type="text" placeholder="Enter email" [(ngModel)]="description1" #description="ngModel" >
                                          <mat-error *ngIf="description.hasError('required')" >Enter Email</mat-error>
                                          <mat-error *ngIf="description.hasError('email_id')" >Enter valid Email Address</mat-error>                    
