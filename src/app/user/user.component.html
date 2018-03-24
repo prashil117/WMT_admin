@@ -110,7 +110,7 @@
                                         <!-- Status -->
                                           <ng-container matColumnDef="user_DOB">
                                             <mat-header-cell *matHeaderCellDef mat-sort-header> DOB </mat-header-cell>
-                                            <mat-cell *matCellDef="let element"> {{element.user_DO_B}} </mat-cell>
+                                            <mat-cell *matCellDef="let element"> {{element.user_DO_B | date}} </mat-cell>
                                           </ng-container>
 
                                           <ng-container matColumnDef="user_gender">
