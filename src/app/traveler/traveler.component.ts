@@ -48,6 +48,8 @@ export class TravelerComponent implements OnInit {
     this.data1.deleteTraveller(item.traveller_id).subscribe(
       (data:any)=>{
         this.Traveler.splice(this.Traveler.indexOf(item),1);
+        alert("Deleted Sucessfull");
+        this._router.navigate(['/traveler']);
       }
     );
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { UserserviceService } from '../user/userservice.service';
@@ -10,6 +10,8 @@ import { User } from "../user/userc";
   styleUrls: ['./edituser.component.css']
 })
 export class EdituserComponent implements OnInit {
+  @ViewChild('fileInput') fileInput: ElementRef;
+  selectedFile: File = null;
 public _subscription:Subscription;
 email:string="";
 name1:string="";
@@ -45,12 +47,53 @@ email1:string="";
     );
 
   }
+
+  onFileSelected(value) {
+    this.selectedFile = <File>value.target.files[0];
+
+    console.log(value);
+  }
+
+  getPicture() {
+    this.fileInput.nativeElement.click();
+  }
+
+
 onUpdate(){
-  let user=new User(this.email,'',this.name1,this.address1,this.bod1,this.gender,this.img,this.mobile1);
+ /* let user=new User(this.email,'',this.name1,this.address1,this.bod1,this.gender,this.img,this.mobile1);
   this._data.editUser(this.email,user).subscribe(
     ()=>{
       this._router.navigate(['/user']);
     }
-  );
+  );*/
+
+  if (this.selectedFile == null) {
+    let user=new User(this.email,'',this.name1,this.address1,this.bod1,this.gender,this.img,this.mobile1);
+    this._data.editUser(this.email, user).subscribe(
+      () => {
+        this._router.navigate(['/user']);
+      }
+    );
+  }
+  else {
+    const fd=new FormData();
+    fd.append('user_email_id',this.email);
+    fd.append('user_name',this.name1);
+    fd.append('user_address',this.address1);
+    fd.append('user_DO_B',this.bod1);
+    fd.append('user_gender',this.gender);
+    fd.append('image',this.selectedFile,this.selectedFile.name);
+    fd.append('user_mobile_no',this.mobile1);
+       console.log(fd);
+
+    console.log(fd);
+
+    this._data.editUserimg(fd).subscribe(
+      (data: any) => {
+        console.log(data);
+        this._router.navigate(['/user']);
+      }
+    );
+  }
 }
 }

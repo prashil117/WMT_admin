@@ -54,6 +54,8 @@ editUser(item){
    this.data1.deleteUser(item.user_email_id).subscribe(
       (data:any)=>{
         this.users.splice(this.users.indexOf(item),1);
+        alert("Deleted Sucessfull");
+        this._router.navigate(['/user']);
       }
     );
   }
