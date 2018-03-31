@@ -15,6 +15,7 @@ export class AddhotelComponent implements OnInit {
   hotel_img:string;
   hotel_feedback:string;
   hotel_city:string;
+  hotel_city1:string;
   hotel_rating:string;
   hotel_description:string;
   public file_srcs:string[]=[];
@@ -127,17 +128,18 @@ export class AddhotelComponent implements OnInit {
     this.hotel_name=addform.value.hotel_name;
     this.hotel_address=addform.value.hotel_address;
     this.hotel_city=addform.value.hotel_city;
+    this.hotel_city1=this.hotel_city.toLowerCase();
 
     const fd=new FormData();
     fd.append('hotel_description',this.hotel_description);
     fd.append('hotel_name',this.hotel_name);
     fd.append('hotel_address',this.hotel_address);
     fd.append('hotel_feedback',this.hotel_feedback);
-    fd.append('hotel_city',this.hotel_city);
+    fd.append('hotel_city',this.hotel_city1);
     fd.append('image',this.selectedFile,this.selectedFile.name);
     fd.append('hotel_rating',this.hotel_rating);
     
-   let item=new Hotels(this.hotel_name,this.hotel_address,this.hotel_img,this.hotel_feedback,this.hotel_city,this.hotel_rating,this.hotel_description);
+   let item=new Hotels(this.hotel_name,this.hotel_address,this.hotel_img,this.hotel_feedback,this.hotel_city1,this.hotel_rating,this.hotel_description);
    console.log(item);
    // this._data.addHotel(item).subscribe(
     this._data.addHotel(fd).subscribe(
