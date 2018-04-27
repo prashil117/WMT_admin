@@ -4,9 +4,9 @@ import { Hotels } from './hotel/hotelc';
 
 @Injectable()
 export class HotelDataService {
-  public url: string = "http://localhost:3000/hotel/";
-  public url1: string = "http://localhost:3000/deletehotels";
-  public url2: string = "http://localhost:3000/hotelimgu/";
+  public url: string = "https://wishmytrip.herokuapp.com/hotel/";
+  public url1: string = "https://wishmytrip.herokuapp.com/deletehotels";
+  public url2: string = "https://wishmytrip.herokuapp.com/hotelimgu/";
   content: string = "Content-Type";
   header: string = "application/json";
   constructor(public _http: HttpClient) { }

@@ -5,9 +5,9 @@ import { Traveler } from './travelerc';
 export class TravelerserviceService {
 
   
-  public url:string="http://localhost:3000/travellers/";
-  public url1:string="http://localhost:3000/deletealltrav";
-  public url2: string = "http://localhost:3000/travellerimgu/";
+  public url:string="https://wishmytrip.herokuapp.com/travellers/";
+  public url1:string="https://wishmytrip.herokuapp.com/deletealltrav";
+  public url2: string = "https://wishmytrip.herokuapp.com/travellerimgu/";
   constructor(public _http:HttpClient) { }
 
   content:string="Content-Type";
