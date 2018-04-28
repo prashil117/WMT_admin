@@ -29,6 +29,7 @@ import { AddtavelerComponent } from './addtaveler/addtaveler.component';
 import { EdittavelerComponent } from './edittaveler/edittaveler.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotComponent } from './forgot/forgot.component';
+import { NgProgressModule } from 'ngx-progressbar';
 import { EmailserviceService } from './forgot/emailservice.service';
 
 
@@ -57,6 +58,7 @@ import { MatInputModule,MatFormFieldModule,MatButtonModule,MatCardModule,MatTabl
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgProgressModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatFormFieldModule,

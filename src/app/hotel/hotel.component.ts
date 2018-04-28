@@ -4,6 +4,7 @@ import {  Hotels} from "./hotelc";
 import { NavbarComponent } from '../navbar/navbar.component';
 import { HotelDataService } from '../hotel-data.service';
 import { Router } from '@angular/router';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-hotel',
@@ -18,7 +19,7 @@ export class HotelComponent implements OnInit {
   txtsearch:string="";
   displayedColumns = ['check','hotel_img','hotel_name', 'hotel_address','hotel_feedback','hotel_city','hotel_rating','hotel_description','hotel_action'];
   dataSource: MatTableDataSource<Hotels>;
-  constructor(public _data:HotelDataService,public _router:Router) { }
+  constructor(public _data:HotelDataService,public _router:Router,public ngProgress: NgProgress) { }
 
   ngOnInit() {
     this._data.getAllHotels().subscribe(
@@ -45,11 +46,13 @@ export class HotelComponent implements OnInit {
 
   onHotelDelete(item)
   {
+    this.ngProgress.start();
     this._data.deleteHotel(item.hotel_id).subscribe(
       (data:any)=>{
         this.hotel.splice(this.hotel.indexOf(item),1);
         alert("Deleted Sucessfull");
         this._router.navigate(['/hotels']);
+        this.ngProgress.done();
       }
     );
   }
@@ -130,13 +133,14 @@ deleteAll()
   
   if(confirm("Are you sure you want to delete"))
   {
-    
+    this.ngProgress.start();
     this._data.deleteAllHotels(this.delarr).subscribe(
       (data:any)=>{
         for(this.i=0;this.i<this.delarr.length;this.i++)
         {
           this.hotel.splice(this.hotel.indexOf(this.delarr[this.i]),1);
           console.log("DONE");
+          this.ngProgress.done();
         }
         this.hotel1=[];
       },

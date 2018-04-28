@@ -3,6 +3,7 @@ import { TravelerserviceService } from './travelerservice.service';
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
 import { Router } from '@angular/router';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-traveler',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class TravelerComponent implements OnInit {
   @ViewChild(MatPaginator)paginator:MatPaginator;
-  constructor(public data1:TravelerserviceService,public _router:Router) { }
+  constructor(public data1:TravelerserviceService,public _router:Router,public ngProgress: NgProgress) { }
   public Traveler:Traveler[]=[];
   public delarr:Traveler[]=[];
   public Traveler1:Traveler[]=[];
@@ -44,12 +45,13 @@ export class TravelerComponent implements OnInit {
 
   onTravellerDelete(item)
   {
-  
+    this.ngProgress.start();
     this.data1.deleteTraveller(item.traveller_id).subscribe(
       (data:any)=>{
         this.Traveler.splice(this.Traveler.indexOf(item),1);
         alert("Deleted Sucessfull");
         this._router.navigate(['/traveler']);
+        this.ngProgress.done();
       }
     );
   }
@@ -117,13 +119,14 @@ deleteAll()
   
   if(confirm("Are you sure you want to delete"))
   {
-    
+    this.ngProgress.start(); 
     this.data1.deleteAllTraveler(this.delarr).subscribe(
       (data:any)=>{
         for(this.i=0;this.i<this.delarr.length;this.i++)
         {
           this.Traveler.splice(this.Traveler.indexOf(this.delarr[this.i]),1);
           console.log("DONE");
+          this.ngProgress.done();
         }
         this.Traveler1=[];
       },

@@ -3,6 +3,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { Traveler } from './../traveler/travelerc';
 import { TravelerserviceService } from '../traveler/travelerservice.service';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-edittaveler',
@@ -19,7 +20,7 @@ export class EdittavelerComponent implements OnInit {
   img1:string="";
   email1:string="";
   city1:string="";
-  constructor(public _router:Router,public _activatedRoute:ActivatedRoute,public _data:TravelerserviceService) { }
+  constructor(public _router:Router,public _activatedRoute:ActivatedRoute,public _data:TravelerserviceService,public ngProgress: NgProgress) { }
 
   ngOnInit() {
     this._subscription=this._activatedRoute.params.subscribe(
@@ -58,11 +59,13 @@ getPicture() {
         this._router.navigate(['/traveler']);
       }
     );*/
+    this.ngProgress.start();
     if (this.selectedFile == null) {
       let traveler=new Traveler(this.name1,'','',this.address1,this.img1,this.city1);
       this._data.editTraveler(this.id, traveler).subscribe(
         () => {
           this._router.navigate(['/traveler']);
+          this.ngProgress.done();
         }
       );
     }
@@ -81,6 +84,7 @@ getPicture() {
         (data: any) => {
           console.log(data);
           this._router.navigate(['/traveler']);
+          this.ngProgress.done();
         }
       );
     }

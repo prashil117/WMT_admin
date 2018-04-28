@@ -6,6 +6,7 @@
             <a routerLink="/hotels">Back</a>
             <h3 class="text-center m-t-0 m-b-15"> <label class="logo logo-admin"><span>Add</span>Hotel</label></h3>
             <h4 class="text-muted text-center m-t-0"></h4>
+            <ng-progress></ng-progress>
             <form class="form-horizontal m-t-20"  (ngSubmit)="onAdd(addform)" #addform="ngForm">
                 <!--<div class="form-group">
                     <div class="col-xs-12"> <input class="form-control" type="text" required="" placeholder="hotel name " [(ngModel)]="hotel_name" name="hotel_name" id="hotel_name"></div>
