@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { HotelDataService } from '../hotel-data.service';
 import { Hotels } from "../hotel/hotelc";
+import { NgProgress } from 'ngx-progressbar';
 @Component({
   selector: 'app-edithotel',
   templateUrl: './edithotel.component.html',
@@ -21,7 +22,7 @@ export class EdithotelComponent implements OnInit {
   description1: string = "";
   selectedFile: File = null;
 
-  constructor(public _router: Router, public _activatedRoute: ActivatedRoute, public _data: HotelDataService) { }
+  constructor(public _router: Router, public _activatedRoute: ActivatedRoute, public _data: HotelDataService,public ngProgress: NgProgress) { }
 
   ngOnInit() {
     this._subscription = this._activatedRoute.params.subscribe(
@@ -55,13 +56,14 @@ export class EdithotelComponent implements OnInit {
   }
 
   onUpdate() {
-
+    this.ngProgress.start();
     if (this.selectedFile == null) {
       let hotel = new Hotels(this.name1, this.address1, '', this.feedback1, this.city1, this.rating1, this.description1);
 
       this._data.editHotel(this.id, hotel).subscribe(
         () => {
           this._router.navigate(['/hotels']);
+          this.ngProgress.done();
         }
       );
     }
@@ -82,6 +84,7 @@ export class EdithotelComponent implements OnInit {
         (data: any) => {
           console.log(data);
           this._router.navigate(['/hotels']);
+          this.ngProgress.done();
         }
       );
     }

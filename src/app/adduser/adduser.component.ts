@@ -2,6 +2,7 @@ import { Component, OnInit,ChangeDetectorRef} from '@angular/core';
 import { UserserviceService } from '../user/userservice.service';
 import { User } from '../user/userc';
 import { Router } from '@angular/router';
+import { NgProgress } from 'ngx-progressbar';
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
@@ -22,7 +23,7 @@ export class AdduserComponent implements OnInit {
   public debug_size_before:string[]=[];
   public debug_size_after:string[]=[];
   selectedFile:File=null;
-  constructor(public _router:Router,public _data:UserserviceService,public changeDetectorRef:ChangeDetectorRef) { }
+  constructor(public _router:Router,public _data:UserserviceService,public changeDetectorRef:ChangeDetectorRef,public ngProgress: NgProgress) { }
 
   ngOnInit() {
   }
@@ -120,7 +121,7 @@ export class AdduserComponent implements OnInit {
   }*/
 
   onAdd(addform){
-
+    this.ngProgress.start();
     this.email_id=addform.value.email_id;
     this.password=addform.value.password;
     this.user_name=addform.value.user_name;
@@ -143,6 +144,7 @@ export class AdduserComponent implements OnInit {
       (data:any)=>{
         console.log(data);
         this._router.navigate(['/user']);
+        this.ngProgress.done();
       }
     );
   }

@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Traveler } from './../traveler/travelerc';
 import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { TravelerserviceService } from "../traveler/travelerservice.service";
+import { NgProgress } from 'ngx-progressbar';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class AddtavelerComponent implements OnInit {
   public debug_size_after:string[]=[];
   selectedFile:File=null;
 
-  constructor(public _data:TravelerserviceService,public _router:Router,public changeDetectorRef:ChangeDetectorRef) { }
+  constructor(public _data:TravelerserviceService,public _router:Router,public changeDetectorRef:ChangeDetectorRef,public ngProgress: NgProgress) { }
 
   ngOnInit() {
   }
@@ -120,6 +121,7 @@ export class AddtavelerComponent implements OnInit {
 
   onAdd(addform){
 
+    this.ngProgress.start();
     this.email_id=addform.value.email_id;
     this.password=addform.value.password;
     this.name=addform.value.name;
@@ -141,6 +143,7 @@ export class AddtavelerComponent implements OnInit {
       (data:any)=>{
         console.log(data);
         this._router.navigate(['/traveler']);
+        this.ngProgress.done();
       }
     );
   }

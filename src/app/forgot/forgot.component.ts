@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Forget } from './forgetc';
 import { UserserviceService } from '../user/userservice.service';
 import { EmailserviceService } from './emailservice.service';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-forgot',
@@ -16,16 +17,17 @@ export class ForgotComponent implements OnInit {
   email:string="";
   msg:string="";
 emailId:string='';
-  constructor( public _router:Router, public data:LoginDataService,public _data:UserserviceService,public _email:EmailserviceService) { }
+  constructor( public _router:Router, public data:LoginDataService,public _data:UserserviceService,public _email:EmailserviceService,public ngProgress: NgProgress) { }
 
   ngOnInit() {
   }
   onSend()
   {
-    
+    this.ngProgress.start();
     if(this.email=="")
     {
       alert("please enter email address");
+      this.ngProgress.done();
     }
     else
     {
@@ -35,16 +37,18 @@ emailId:string='';
           if(data.length==1){
             var msg=data[0].user_name+" your password is "+data[0].user_password;
             console.log(msg);
-            this._email.sendMail(new Forget(msg,this.email,"Reseting EMail Password")).subscribe(
+            this._email.sendMail(new Forget(msg,this.email,"Reseting Email Password")).subscribe(
               (data:any)=>
               {
                   
                 console.log("msg sent");
               });
             alert("Email has been sent to your "+ this.email);
+            this.ngProgress.done();
           }
           else{
             alert("please enter correct email address");
+            this.ngProgress.done();
           }
         }
       );

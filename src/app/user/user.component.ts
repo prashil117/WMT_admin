@@ -3,6 +3,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material'
 import { UserserviceService } from './userservice.service';
 import { User } from "./userc";
 import { Router } from '@angular/router';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-user',
@@ -19,7 +20,7 @@ export class UserComponent implements OnInit {
   txtsearch:string="";
   displayedColumns = ['check','user_photo', 'user_email_id','user_name','user_address','user_DOB','user_gender','user_mobile_no','user_action'];
   dataSource: MatTableDataSource<User>;
-  constructor(public data1:UserserviceService,public _router:Router) { }
+  constructor(public data1:UserserviceService,public _router:Router,public ngProgress: NgProgress) { }
   
   ngOnInit() {
    this.data1.getAllUsers().subscribe(
@@ -51,11 +52,13 @@ editUser(item){
 }
   deletuser(item)
   {
+    this.ngProgress.start();
    this.data1.deleteUser(item.user_email_id).subscribe(
       (data:any)=>{
         this.users.splice(this.users.indexOf(item),1);
         alert("Deleted Sucessfull");
         this._router.navigate(['/user']);
+        this.ngProgress.done();
       }
     );
   }
@@ -97,13 +100,14 @@ editUser(item){
     
     if(confirm("Are you sure you want to delete"))
     {
-      
+      this.ngProgress.start();
       this.data1.deleteAllUser(this.delarr).subscribe(
         (data:any)=>{
           for(this.i=0;this.i<this.delarr.length;this.i++)
           {
             this.users.splice(this.users.indexOf(this.delarr[this.i]),1);
             console.log("DONE");
+            this.ngProgress.done();
           }
           this.users1=[];
         },

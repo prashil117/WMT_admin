@@ -2,6 +2,7 @@ import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { HotelDataService } from "../hotel-data.service";
 import { Hotels } from "../hotel/hotelc";
 import { Router } from "@angular/router";
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-addhotel',
@@ -22,7 +23,7 @@ export class AddhotelComponent implements OnInit {
   public debug_size_before:string[]=[];
   public debug_size_after:string[]=[];
   selectedFile:File=null;
-  constructor(public _data:HotelDataService,public _router:Router,public changeDetectorRef:ChangeDetectorRef) { }
+  constructor(public _data:HotelDataService,public _router:Router,public changeDetectorRef:ChangeDetectorRef,public ngProgress: NgProgress) { }
 
   ngOnInit() {
   }
@@ -121,7 +122,7 @@ export class AddhotelComponent implements OnInit {
 
   onAdd(addform)
   {
-    
+    this.ngProgress.start(); 
     this.hotel_rating=addform.value.hotel_rating;
     this.hotel_feedback=addform.value.hotel_feedback;
     this.hotel_description=addform.value.hotel_description;
@@ -145,6 +146,7 @@ export class AddhotelComponent implements OnInit {
     this._data.addHotel(fd).subscribe(
       (data:any)=>{
         console.log(data);
+        this.ngProgress.done();
         this._router.navigate(['/hotels']);
       }
     );

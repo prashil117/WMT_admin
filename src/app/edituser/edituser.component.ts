@@ -3,6 +3,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { UserserviceService } from '../user/userservice.service';
 import { User } from "../user/userc";
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-edituser',
@@ -22,7 +23,7 @@ bod1:string="";
 img:string="";
 email1:string="";
 
-  constructor(public _router:Router,public _activatedRoute:ActivatedRoute,public _data:UserserviceService) { }
+  constructor(public _router:Router,public _activatedRoute:ActivatedRoute,public _data:UserserviceService,public ngProgress: NgProgress) { }
 
   ngOnInit() {
     this._subscription=this._activatedRoute.params.subscribe(
@@ -66,12 +67,13 @@ onUpdate(){
       this._router.navigate(['/user']);
     }
   );*/
-
+  this.ngProgress.start();
   if (this.selectedFile == null) {
     let user=new User(this.email,'',this.name1,this.address1,this.bod1,this.gender,this.img,this.mobile1);
     this._data.editUser(this.email, user).subscribe(
       () => {
         this._router.navigate(['/user']);
+        this.ngProgress.done();
       }
     );
   }
@@ -92,6 +94,7 @@ onUpdate(){
       (data: any) => {
         console.log(data);
         this._router.navigate(['/user']);
+        this.ngProgress.done();
       }
     );
   }

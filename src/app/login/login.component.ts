@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from './loginc';
 import {FormControl} from "@angular/forms";
+import { NgProgress } from 'ngx-progressbar';
 
 
 @Component({
@@ -18,13 +19,14 @@ export class LoginComponent implements OnInit {
 
   inpemail:string="abc";
   inpPass:string="1234";
-  constructor(public _router:Router, public data:LoginDataService) { }
+  constructor(public _router:Router, public data:LoginDataService,public ngProgress: NgProgress) { }
 
   ngOnInit() {
     alert("welcome");
   }
   onLogin(login) {
     
+    this.ngProgress.start();
     this.email_id=login.value.email_id;
     this.pass=login.value.pass;
     console.log(this.email_id); 
@@ -36,14 +38,17 @@ export class LoginComponent implements OnInit {
         if (data1.length==1) {
           localStorage.setItem('Email',this.email_id);
         this._router.navigate(['/dashboard']);
+        this.ngProgress.done();
         }
         else {
           if (this.email_id.length==1) {
               if( this.pass.length!=1)
               {
+                this.ngProgress.done();
             alert("password is wrong");
               }
         }else{
+          this.ngProgress.done();
               alert("Incorrect Email and Password");   
         }
       }
