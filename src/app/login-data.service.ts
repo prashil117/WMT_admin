@@ -20,7 +20,7 @@ export class LoginDataService {
   forget(item)
   {
     let body=JSON.stringify(item);
-    
+    ///hii
       return this._http.post(this.urlforget,body,{headers:new HttpHeaders().set('Content-Type','application/json')});
   }
 
