@@ -37,7 +37,7 @@ emailId:string='';
           if(data.length==1){
             var msg=data[0].user_name+" your password is "+data[0].user_password;
             console.log(msg);
-            this._email.sendMail(new Forget(msg,this.email,"Reseting EMail Password")).subscribe(
+            this._email.sendMail(new Forget(msg,this.email,"Reseting Email Password")).subscribe(
               (data:any)=>
               {
                   

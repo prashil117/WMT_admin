@@ -7,7 +7,7 @@ import { User } from './user/userc';
 @Injectable()
 
 export class LoginDataService {
-  public url:string="https://wishmytrip.herokuapp.com/login/";
+  public url:string="https://wishmytrip.herokuapp.com/adminlogin/";
   public urlforget:string="http://localhost:3000/email/";
 
   constructor(public _http:HttpClient) { }
