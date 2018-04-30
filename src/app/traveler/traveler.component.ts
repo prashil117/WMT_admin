@@ -52,6 +52,7 @@ export class TravelerComponent implements OnInit {
         alert("Deleted Sucessfull");
         this._router.navigate(['/traveler']);
         this.ngProgress.done();
+        this.ngOnInit();
       }
     );
   }
@@ -127,6 +128,7 @@ deleteAll()
           this.Traveler.splice(this.Traveler.indexOf(this.delarr[this.i]),1);
           console.log("DONE");
           this.ngProgress.done();
+          this.ngOnInit();
         }
         this.Traveler1=[];
       },

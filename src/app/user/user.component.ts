@@ -59,6 +59,7 @@ editUser(item){
         alert("Deleted Sucessfull");
         this._router.navigate(['/user']);
         this.ngProgress.done();
+        this.ngOnInit();
       }
     );
   }
@@ -108,6 +109,7 @@ editUser(item){
             this.users.splice(this.users.indexOf(this.delarr[this.i]),1);
             console.log("DONE");
             this.ngProgress.done();
+            this.ngOnInit();
           }
           this.users1=[];
         },

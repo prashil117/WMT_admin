@@ -53,6 +53,7 @@ export class HotelComponent implements OnInit {
         alert("Deleted Sucessfull");
         this._router.navigate(['/hotels']);
         this.ngProgress.done();
+        this.ngOnInit();
       }
     );
   }
@@ -141,6 +142,7 @@ deleteAll()
           this.hotel.splice(this.hotel.indexOf(this.delarr[this.i]),1);
           console.log("DONE");
           this.ngProgress.done();
+          this.ngOnInit();
         }
         this.hotel1=[];
       },
